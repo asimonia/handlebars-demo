@@ -1,0 +1,15 @@
+{{#each cars}}
+
+ <section id="card--{{@index}}" class="card-wrapper" style="border: 2px solid {{color}}">
+ 	<h3>Car #{{@index}}</h3>
+ 	<h4>{{year}} {{make}}</h4>
+ 	<div class="car-price">${{price}}</div>
+ 	<div class="card-img" style="background-image: url('images/{{image}}')"></div>
+ 	{{#if purchased}}
+ 	  <span class="car-sold">SOLD!</span>
+ 	{{/if}}
+ 	<p class="card-copy"> {{description}}</p>
+
+ </section>
+
+{{/each}}
