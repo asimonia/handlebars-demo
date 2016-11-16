@@ -1,7 +1,6 @@
 "use strict";
 
-var userInput = document.getElementById('editInput'),
-    cardStyle = {};
+let cardStyle = {};
 
 cardStyle.highlightCard = function(event) {
   // grab all the "is-clicked" elements and remove the class
@@ -9,22 +8,20 @@ cardStyle.highlightCard = function(event) {
   var carCards = document.getElementsByClassName("is-clicked");
   if (carCards.length > 0) {
     for (var i = 0; i < carCards.length; i++ ) {
-      carCards[i].classList.remove("is-clicked");
+      $(carCards[i]).removeClass("is-clicked");
     }
   }
   // ".closest" find the nearest ancestor. Not EI compatible
   var card = event.target.closest(".card-wrapper");
-  userInput.focus();
+  $("#editInput").focus();
   // toggle the "is-clicked" class to change border and backgd in CSS
   card.classList.add("is-clicked");
   // console.log("className", card.className);
 };
 
-cardStyle.editCard = function(event) {
-  var card = document.getElementsByClassName('is-clicked')[0],
-      description = card.lastChild;
-
-  description.innerHTML = userInput.value;
+cardStyle.editCard = function() {
+  let $copy = $(".card-copy");
+  $(".is-clicked").find(".card-copy").text($("#editInput").val());
 };
 
 module.exports = cardStyle;

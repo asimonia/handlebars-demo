@@ -1,7 +1,9 @@
+{{> navbar}}
+
 {{#each cars}}
 
  <section id="card--{{@index}}" class="card-wrapper" style="border: 2px solid {{color}}">
- 	<h3>Car #{{@index}}</h3>
+ 	<h3>Car #{{increment @index}}</h3>
  	<h4>{{year}} {{make}}</h4>
  	<div class="car-price">${{price}}</div>
  	<div class="card-img" style="background-image: url('images/{{image}}')"></div>

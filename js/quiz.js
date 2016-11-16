@@ -5,16 +5,16 @@ let carInventory = require('./carLot'),
     Handlebars = require('hbsfy/runtime'),
     carTemplate = require('../templates/car-grid.hbs');
 
+Handlebars.registerPartial("navbar", require('../templates/partials/nav-bar.hbs'));
+
+Handlebars.registerHelper("increment", (value) => parseInt(value) + 1);
+
 function populatePage (inventory) {
-  // Grab the div we want to apppend the cards to
-  let cards = document.getElementById("inventory-cards");
-  
+  // Make a new div to stick the rendered html into
+  let newDiv = document.createElement("div");
+  newDiv.innerHTML = carTemplate(inventory);
+  $("#inventory-cards").append(newDiv);
 
-  let cardDiv = document.createElement("div"); 
-  cardDiv.innerHTML = (carTemplate(inventory));
-  cards.appendChild(cardDiv);
-
-  // Now that the DOM is loaded, establish all the event listeners needed
   eventStuff();
 }
 
